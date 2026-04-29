@@ -2,20 +2,25 @@ package com.pocsma.jparelationalmodel.app.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
-import lombok.Data;
-
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
-public class User implements Serializable{	
+public class User implements Serializable {
+
 	private static final long serialVersionUID = 2214981045140252170L;
-	
-	@Id	
+
+	@Id
+	@Column(name = "user_id", nullable = false)
 	private Integer userId;
-	
+
+	@Column(name = "name", nullable = false)
 	private String name;
 }

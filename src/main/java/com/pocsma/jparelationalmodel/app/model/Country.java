@@ -2,18 +2,25 @@ package com.pocsma.jparelationalmodel.app.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
-import lombok.Data;
-
+@Getter
+@Setter
 @Entity
-@Data
-public class Country implements Serializable {	
+@Table(name = "country")
+public class Country implements Serializable {
+
 	private static final long serialVersionUID = 8807215633600118386L;
-	
+
 	@Id
-	private Integer countryId;	
-	
-	private String countryName;	
+	@Column(name = "country_id", nullable = false)
+	private Integer countryId;
+
+	@Column(name = "country_name", nullable = false)
+	private String name;
 }
