@@ -5,7 +5,7 @@ Proof of concept of a Spring Boot 3 application that exposes a relational domain
 The goal of this repository is to provide a small but realistic example of:
 
 - mapping relational structures with JPA
-- exposing read endpoints over related aggregates
+- exposing REST endpoints over related aggregates
 - documenting the API with OpenAPI and Swagger UI
 - keeping the codebase aligned with a modern Spring Boot 3 / Java 21 stack
 
@@ -22,12 +22,13 @@ The goal of this repository is to provide a small but realistic example of:
 
 ## Project Scope
 
-This repository is intentionally small. It focuses on read-only exploration of a relational model composed of sales, stores, users, products and status history.
+This repository is intentionally small. It focuses on exploration of a relational model composed of sales, stores, users, products and status history.
 
 It is not intended to be a production-ready application. Instead, it is a compact reference project that can be used to:
 
 - understand entity relationships in a Spring Boot application
 - explore DTO-based API exposure instead of returning JPA entities directly
+- see a small CRUD example for a relation-backed aggregate such as order status history
 - use MapStruct for mapping between entities and API contracts
 - spin up a local environment quickly for demos, experiments or technical articles
 
@@ -100,11 +101,15 @@ The generated OpenAPI document is available at:
 
 ### Main Endpoints
 
-This POC currently exposes these read endpoints:
+This POC currently exposes these endpoints:
 
 - `GET /sales`
 - `GET /stores`
 - `GET /order-statuses`
+- `GET /order-statuses/{id}`
+- `POST /order-statuses`
+- `PUT /order-statuses/{id}`
+- `DELETE /order-statuses/{id}`
 
 ## Implementation Notes
 
